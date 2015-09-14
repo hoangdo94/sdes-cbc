@@ -8,7 +8,7 @@ function uploadFile(file, progressCallback, loadCallback) {
 
     xhr.upload.onprogress = function(e) {
         if (progressCallback && e.lengthComputable) {
-            var percentage = (e.loaded / e.total) * 100;
+            var percentage = Math.round((e.loaded / e.total) * 100);
             progressCallback(percentage);
         }
     };
