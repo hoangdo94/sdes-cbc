@@ -28,7 +28,7 @@ function uploadFile(file, progressCallback, loadCallback) {
 
 function changeProgress($element, percent) {
     var progressBarWidth = percent * $element.width() / 100;
-    $element.find('div').animate({
+    $element.find('div').css({
         width: progressBarWidth
-    }, 500).html(percent + "% ");
+    }).html(percent + "% ");
 }
