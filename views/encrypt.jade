@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1
+    i.fa.fa-lock &nbsp
+    | Encrypt File
+  form.pure-form.pure-form-stacked
+    fieldset
+      legend 
+        | Please select 
+        b input 
+        | file, enter 
+        b key
+        |, 
+        b iv 
+        | then press 
+        b Submit
+      .pure-control-group
+        label(for='file') Input File
+        input#file(type='file', required)
+      .pure-control-group
+        label(for='key') Key
+        input#key(type='text', value='0010010111', pattern='[01]{10}', title='key must be 10-bit binary', required)
+      .pure-control-group
+        label(for='iv') Initialization Vector
+        input#iv(type='text', value='10101010', pattern='[01]{8}', title='Iv must be 8-bit binary', required)
+      .pure-controls
+        button.pure-button.pure-button-primary(type='submit') Submit
+  #progress-container(style='display: none')
+    .progress-bar#upload-progress
+      div
+    | Uploading file...
+    .progress-bar#encrypt-progress
+      div
+    | Encrypting file...
+  #download-link
+  script(type='text/javascript', src='/javascripts/upload.js')
+  script(type='text/javascript', src='/javascripts/encrypt.js')

@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title 51201200 | S-DES CBC
+    link(rel='stylesheet', href='/stylesheets/pure-min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    script(type='text/javascript', src='/javascripts/jquery-1.11.3.min.js')
+  body
+    .header
+      .pure-menu.pure-menu-horizontal.home-menu
+        .container
+          a.pure-menu-heading(href='/') Simplified DES
+          ul.pure-menu-list
+            li.pure-menu-item
+              a.pure-menu-link(href='/encrypt') Encrypt
+            li.pure-menu-item
+              a.pure-menu-link(href='/decrypt') Decrypt
+    .container
+      .content
+        block content
+      .footer
+        p Do Nguyen Khanh Hoang - 51201200@hcmut.edu.vn

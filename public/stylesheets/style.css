@@ -1,0 +1,221 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/*
+ * -- BASE STYLES --
+ */
+
+body {
+    line-height: 1.7em;
+    color: #7f8c8d;
+    font-size: 13px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #34495e;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+
+/*
+ * -- PURE FORM STYLES --
+ */
+
+.pure-form label {
+    margin: 1em 0 0;
+    font-weight: bold;
+    font-size: 100%;
+}
+
+.pure-form input[type] {
+    border: 2px solid #ddd;
+    box-shadow: none;
+    font-size: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+
+/*
+ * -- PURE BUTTON STYLES --
+ */
+
+.pure-button {
+    background-color: #1f8dd6;
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+}
+
+a.pure-button-primary {
+    background: white;
+    color: #1f8dd6;
+    border-radius: 5px;
+    font-size: 120%;
+}
+
+
+/*
+ * -- MENU STYLES --
+ */
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
+}
+
+.home-menu {
+    background: #2d3e50;
+}
+
+.home-menu .pure-menu-heading {
+    color: white;
+    font-weight: 400;
+    font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+    color: white !important;
+}
+
+.home-menu a {
+    color: #6FBEF3;
+}
+
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5 !important;
+}
+
+.footer {
+    border-top: 1px dashed lightgray;
+    text-align: center;
+    margin-top: 1em;
+}
+
+h1 {
+    text-align: center;
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.button-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+
+.button-warning {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
+.button-secondary {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}
+
+.button-xsmall {
+    font-size: 70%;
+}
+
+.button-small {
+    font-size: 85%;
+}
+
+.button-large {
+    font-size: 110%;
+}
+
+.button-xlarge {
+    font-size: 125%;
+}
+
+.progress-bar {
+    height: 22px;
+    background: #292929;
+    border: 1px solid #111; 
+    border-radius: 5px; 
+    overflow: hidden;
+    box-shadow: 0 0 5px #333;       
+}
+
+.progress-bar div {
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    line-height: 22px;
+    width: 0;
+    background-color: #1a82f7;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0099FF), to(#1a82f7)); 
+    background: -webkit-linear-gradient(top, #0099FF, #1a82f7); 
+    background: -moz-linear-gradient(top, #0099FF, #1a82f7); 
+    background: -ms-linear-gradient(top, #0099FF, #1a82f7); 
+    background: -o-linear-gradient(top, #0099FF, #1a82f7);
+}
+
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ */
+
+@media (min-width: 48em) {
+    /* We increase the body font size */
+    body {
+        font-size: 16px;
+    }
+    /* We want to give the content area some more padding */
+    .content {
+        padding: 1em;
+    }
+    /* We can align the menu header to the left, but float the
+    menu items to the right. */
+    .home-menu {
+        text-align: left;
+    }
+    /* We remove the border-separator assigned to .l-box-lrg */
+    .l-box-lrg {
+        border: none;
+    }
+    .container {
+        width: 90%;
+    }
+}
+
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ */
+
+@media (min-width: 78em) {
+    .container {
+        width: 70%;
+    }
+}
