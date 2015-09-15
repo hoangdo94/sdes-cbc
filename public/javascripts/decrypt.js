@@ -5,7 +5,7 @@ $('form').submit(function(e) {
     $('#file').prop('disabled', true);
     $('#key').prop('disabled', true);
     $('#iv').prop('disabled', true);
-    $('#download-link').empty();
+    $('#download-link').hide();
     //show progress
     $('#progress-container').show();
     changeProgress($('#upload-progress'), 0);
@@ -28,12 +28,13 @@ $('form').submit(function(e) {
                 $('#file').prop('disabled', false);
                 $('#key').prop('disabled', false);
                 $('#iv').prop('disabled', false);
-                $('#progress-container').hide();
                 if (r === 'failed') {
                     alert('Failed...');
                 } else {
-                    alert('Done...');
-                    $('#download-link').html('<a class="pure-button button-success" href="' + r + '" target="_blank" download>Download Decrypted file</a>');
+                    changeProgress($('#decrypt-progress'),100);
+                    $('#download-link').show();
+                    $('#download-link').attr('href', r);
+                    // alert('Done...');
                 }
             })
         }

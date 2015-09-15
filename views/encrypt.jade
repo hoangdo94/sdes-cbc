@@ -25,7 +25,13 @@ block content
         label(for='iv') Initialization Vector
         input#iv(type='text', value='10101010', pattern='[01]{8}', title='Iv must be 8-bit binary', required)
       .pure-controls
-        button.pure-button.pure-button-primary(type='submit') Submit
+        button.pure-button.pure-button-primary(type='submit')
+          i.fa.fa-paper-plane &nbsp;
+          | Submit
+        | &nbsp;
+        a#download-link.pure-button.button-success(href='',target='_blank',download,style='display: none')
+          i.fa.fa-download &nbsp;
+          | Download Encrypted file
   #progress-container(style='display: none')
     .progress-bar#upload-progress
       div
@@ -33,6 +39,5 @@ block content
     .progress-bar#encrypt-progress
       div
     | Encrypting file...
-  #download-link
   script(type='text/javascript', src='/javascripts/upload.js')
   script(type='text/javascript', src='/javascripts/encrypt.js')
