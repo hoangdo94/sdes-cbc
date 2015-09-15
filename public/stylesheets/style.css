@@ -162,8 +162,7 @@ h1 {
 .progress-bar {
     height: 22px;
     background: #292929;
-    border: 2px solid #ddd;
-    box-shadow: none;
+    border: 1px solid #111; 
     border-radius: 5px; 
     overflow: hidden;
     box-shadow: 0 0 5px #333;       
