@@ -14,7 +14,8 @@ function uploadFile(file, progressCallback, loadCallback) {
     };
 
     xhr.onerror = function(e) {
-        alert('An error occurred while uploading file');
+        alert('An error occurred while uploading file, maybe the file is too big');
+        location.reload(); 
     };
 
     xhr.onload = function() {
