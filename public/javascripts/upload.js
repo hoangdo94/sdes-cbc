@@ -20,6 +20,7 @@ function uploadFile(file, progressCallback, loadCallback) {
 
     xhr.onload = function() {
         if (loadCallback) {
+            console.log(this.response);
             loadCallback(this.statusText, JSON.parse(this.response));
         }
     };
