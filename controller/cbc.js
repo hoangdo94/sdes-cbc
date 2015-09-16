@@ -6,18 +6,25 @@ function encode(input, output, key, iv, callback) {
     var lastByte = parseInt(iv, 2);
     var readStream = fs.createReadStream(input);
     var writeStream = fs.createWriteStream(output);
+
+    var done = false;
+
     readStream.on('error', function(err) {
-        callback(err, null);
+        return callback(err, null);
     })
     readStream.on('end', function() {
-    	callback(null,'OK');
+    	done = true;
     })
     readStream.on('data', function(chunk) {
         for (var i = 0; i < chunk.length; i++) {
             chunk[i] = sdes.encode(chunk[i] ^ lastByte);
             lastByte = chunk[i];
         }
-        writeStream.write(chunk);
+        writeStream.write(chunk, function(err) {
+            if (done) {
+                return callback(err, 'OK');
+            }
+        });
     })
 }
 
@@ -26,11 +33,14 @@ function decode(input, output, key, iv, callback) {
     var lastByte = parseInt(iv, 2);
     var readStream = fs.createReadStream(input);
     var writeStream = fs.createWriteStream(output);
+
+    var done = false;
+
     readStream.on('error', function(err) {
-        callback(err, null);
+        return callback(err, null);
     })
     readStream.on('end', function() {
-    	callback(null,'OK');
+    	done = true;
     })
     readStream.on('data', function(chunk) {
         for (var i = 0; i < chunk.length; i++) {
@@ -38,7 +48,11 @@ function decode(input, output, key, iv, callback) {
 			chunk[i] = sdes.decode(chunk[i]) ^ lastByte;
 			lastByte = currByte;
         }
-        writeStream.write(chunk);
+        writeStream.write(chunk, function(err) {
+            if (done) {
+                return callback(err,'OK');
+            }
+        });
     })
 }
 

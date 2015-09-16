@@ -38,6 +38,7 @@ router.post('/upload', upload.single('inputFile'), function(req, res, next) {
     res.send({
         name: req.file.originalname,
         path: req.file.path,
+        size: req.file.size,
     })
 });
 

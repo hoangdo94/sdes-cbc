@@ -37,6 +37,7 @@ $('form').submit(function(e) {
                     $('#ep').attr('class', 'fa fa-check');
                     $('#download-link').show();
                     $('#download-link').attr('href', r);
+                    $('form')[0].reset();
                     // alert('Done...');
                 }
             })

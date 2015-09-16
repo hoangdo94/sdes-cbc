@@ -15,12 +15,14 @@ function uploadFile(file, progressCallback, loadCallback) {
 
     xhr.onerror = function(e) {
         alert('An error occurred while uploading file, maybe the file is too big');
-        location.reload(); 
+        location.reload();
     };
 
     xhr.onload = function() {
         if (loadCallback) {
-            loadCallback(this.statusText, JSON.parse(this.response));
+            var data = JSON.parse(this.response);
+            console.log('\nFile size', data.size);
+            loadCallback(this.statusText, data);
         }
     };
 
@@ -28,8 +30,16 @@ function uploadFile(file, progressCallback, loadCallback) {
 }
 
 function changeProgress($element, percent) {
-    var progressBarWidth = percent * $element.width() / 100;
     $element.find('div').css({
-        width: progressBarWidth
+        width: percent + '%'
     }).html(percent + "% ");
 }
+
+$(document).ajaxStart(function(e) {
+    var task = (e.target.URL.indexOf('encrypt') !== -1) ? 'Encrypt' : 'Decrypt';
+    console.time(task);
+})
+$(document).ajaxStop(function(e) {
+    var task = (e.target.URL.indexOf('encrypt') !== -1) ? 'Encrypt' : 'Decrypt';
+    console.timeEnd(task);
+})
