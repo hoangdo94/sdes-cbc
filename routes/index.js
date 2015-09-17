@@ -52,7 +52,7 @@ router.post('/encrypt', function(req, res, next) {
     var outputDownloadPath = '/files/' + 'encrypted_' + Date.now() + '_' + filename;
     var output = path.join(__dirname, '/../public', outputDownloadPath);
     console.log(input, output, key, iv);
-    cbc.encode(input, output, key, iv, function(err) {
+    cbc.encrypt(input, output, key, iv, function(err) {
         cleanUpFiles(input, output);
         if (err) res.send('failed');
         else res.send(outputDownloadPath);
@@ -69,7 +69,7 @@ router.post('/decrypt', function(req, res, next) {
     var outputDownloadPath = '/files/' + 'decrypted_' + Date.now() + '_' + filename;
     var output = path.join(__dirname, '/../public', outputDownloadPath);
     console.log(input, output, key, iv);
-    cbc.decode(input, output, key, iv, function(err) {
+    cbc.decrypt(input, output, key, iv, function(err) {
         cleanUpFiles(input, output);
         if (err) res.send('failed');
         else res.send(outputDownloadPath);

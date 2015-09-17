@@ -1,7 +1,7 @@
 var fs = require('fs'),
     SDES = require('./sdes').SDES;
 
-function encode(input, output, key, iv, callback) {
+function encrypt(input, output, key, iv, callback) {
     var sdes = new SDES(key);
     var lastByte = parseInt(iv, 2);
     var readStream = fs.createReadStream(input);
@@ -14,14 +14,14 @@ function encode(input, output, key, iv, callback) {
     })
     readStream.on('data', function(chunk) {
         for (var i = 0; i < chunk.length; i++) {
-            chunk[i] = sdes.encode(chunk[i] ^ lastByte);
+            chunk[i] = sdes.encrypt(chunk[i] ^ lastByte);
             lastByte = chunk[i];
         }
         writeStream.write(chunk);
     })
 }
 
-function decode(input, output, key, iv, callback) {
+function decrypt(input, output, key, iv, callback) {
     var sdes = new SDES(key);
     var lastByte = parseInt(iv, 2);
     var readStream = fs.createReadStream(input);
@@ -35,7 +35,7 @@ function decode(input, output, key, iv, callback) {
     readStream.on('data', function(chunk) {
         for (var i = 0; i < chunk.length; i++) {
             var currByte = chunk[i];
-			chunk[i] = sdes.decode(chunk[i]) ^ lastByte;
+			chunk[i] = sdes.decrypt(chunk[i]) ^ lastByte;
 			lastByte = currByte;
         }
         writeStream.write(chunk);
@@ -43,6 +43,6 @@ function decode(input, output, key, iv, callback) {
 }
 
 module.exports = {
-    encode: encode,
-    decode: decode,
+    encrypt: encrypt,
+    decrypt: decrypt,
 };

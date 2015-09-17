@@ -109,11 +109,11 @@ SDES.prototype.generateKeys = function(k) {
     this.k2 = parseInt(key2, 2);
 }
 
-SDES.prototype.encode = function(data) {
+SDES.prototype.encrypt = function(data) {
     return ip1(fk(sw(fk(ip(data), this.k1)), this.k2));
 }
 
-SDES.prototype.decode = function(data) {
+SDES.prototype.decrypt = function(data) {
     return ip1(fk(sw(fk(ip(data), this.k2)), this.k1));
 }
 
